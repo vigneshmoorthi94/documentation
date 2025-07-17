@@ -5,7 +5,13 @@ import TableChartIcon from "@mui/icons-material/TableChart";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import PieChartIcon from "@mui/icons-material/PieChart";
 
-// Helper for colored badge
+// Explicit color mapping for badges
+const colorMap = {
+  error: { bg: '#ffeaea', text: '#e53935' },
+  warning: { bg: '#fff8e1', text: '#ffb300' },
+  success: { bg: '#eaffea', text: '#43a047' }
+};
+
 const StatBadge = ({ value, color }) => (
   <Box
     sx={{
@@ -14,8 +20,8 @@ const StatBadge = ({ value, color }) => (
       px: 1,
       py: 0.5,
       borderRadius: 1,
-      bgcolor: `${color}.100`,
-      color: `${color}.700`,
+      bgcolor: colorMap[color].bg,
+      color: colorMap[color].text,
       fontWeight: 600,
       fontSize: 16,
       textAlign: "center",
@@ -27,18 +33,24 @@ const StatBadge = ({ value, color }) => (
 
 const ComplianceDashboard = () => {
   return (
-    <Box sx={{ p: { xs: 1, sm: 2, md: 3 } }}>
+    <Box sx={{ p: { xs: 1, sm: 2, md: 3 }, bgcolor: '#fafbfc', minHeight: '100vh' }}>
       <Grid container spacing={2} mb={3}>
         {/* Total Compliance Issues */}
         <Grid item xs={12} sm={6} md={3}>
-          <Card sx={{ p: 2, borderRadius: 3, boxShadow: 0 }}>
+          <Card sx={{
+            p: 2,
+            borderRadius: 3,
+            boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)',
+            border: '1px solid #eee',
+            background: '#fff'
+          }}>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
               <Typography variant="h6" fontWeight={600}>Total Compliance Issues</Typography>
               <Avatar sx={{ bgcolor: "#ffeaea", color: "#e53935", width: 32, height: 32 }}>
                 <ErrorOutlineIcon />
               </Avatar>
             </Box>
-            <Typography variant="h2" color="error" fontWeight={700} mb={1}>47</Typography>
+            <Typography variant="h2" sx={{ color: '#e53935', fontWeight: 700, mb: 1 }}>47</Typography>
             <Box>
               <Box display="flex" alignItems="center" mb={0.5}>
                 <Typography fontWeight={500} flex={1}>High Priority</Typography>
@@ -58,7 +70,13 @@ const ComplianceDashboard = () => {
 
         {/* Issues by Table */}
         <Grid item xs={12} sm={6} md={3}>
-          <Card sx={{ p: 2, borderRadius: 3, boxShadow: 0 }}>
+          <Card sx={{
+            p: 2,
+            borderRadius: 3,
+            boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)',
+            border: '1px solid #eee',
+            background: '#fff'
+          }}>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
               <Typography variant="h6" fontWeight={600}>Issues by Table</Typography>
               <Avatar sx={{ bgcolor: "#eaf3ff", color: "#1976d2", width: 32, height: 32 }}>
@@ -86,7 +104,13 @@ const ComplianceDashboard = () => {
 
         {/* Compliance Categories */}
         <Grid item xs={12} sm={6} md={3}>
-          <Card sx={{ p: 2, borderRadius: 3, boxShadow: 0 }}>
+          <Card sx={{
+            p: 2,
+            borderRadius: 3,
+            boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)',
+            border: '1px solid #eee',
+            background: '#fff'
+          }}>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
               <Typography variant="h6" fontWeight={600}>Compliance Categories</Typography>
               <Avatar sx={{ bgcolor: "#eaffea", color: "#43a047", width: 32, height: 32 }}>
@@ -113,7 +137,13 @@ const ComplianceDashboard = () => {
 
         {/* Resolution Status */}
         <Grid item xs={12} sm={6} md={3}>
-          <Card sx={{ p: 2, borderRadius: 3, boxShadow: 0 }}>
+          <Card sx={{
+            p: 2,
+            borderRadius: 3,
+            boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)',
+            border: '1px solid #eee',
+            background: '#fff'
+          }}>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
               <Typography variant="h6" fontWeight={600}>Resolution Status</Typography>
               <Avatar sx={{ bgcolor: "#f3eaff", color: "#7c4dff", width: 32, height: 32 }}>
