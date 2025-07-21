@@ -7,64 +7,59 @@ import PeopleIcon from "@mui/icons-material/People";
 import PieChartIcon from "@mui/icons-material/PieChart";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 
-// Trend indicator component
-const Trend = ({ value, text, type }) => {
-  let color, icon;
-  if (type === "up") {
-    color = "#e53935";
-    icon = <ArrowUpwardIcon sx={{ fontSize: 18, color, verticalAlign: "middle" }} />;
-  } else {
-    color = "#f59e42";
-    icon = null; // You can add a down arrow or remove icon if needed
-  }
-  return (
-    <Box display="flex" alignItems="center" mt={1}>
-      {icon}
-      <Typography variant="body2" sx={{ color, fontWeight: 600, ml: 0.5, mr: 0.5 }}>
-        {value}
-      </Typography>
-      <Typography variant="body2" color="#64748b">
-        {text}
-      </Typography>
-    </Box>
-  );
-};
-
-// Card data
 const cardData = [
   {
     title: "Projects with Rent Burden",
     value: "28",
-    icon: <ApartmentIcon sx={{ color: "#fbbf24" }} />,
+    icon: <ApartmentIcon sx={{ color: "#fbbf24" }} />, // yellow
     iconBg: "#fff8e1",
-    trend: { value: "4", text: "from last year", type: "up" },
+    trend: { value: "4", text: "from last year" },
     subtext: "(>30% of units)",
+    subtextColor: "#3b82f6",
   },
   {
     title: "Rent-Burdened Households",
     value: "1,247",
-    icon: <PeopleIcon sx={{ color: "#3b82f6" }} />,
+    icon: <PeopleIcon sx={{ color: "#3b82f6" }} />, // blue
     iconBg: "#eaf3ff",
-    trend: { value: "82", text: "from last year", type: "up" },
+    trend: { value: "82", text: "from last year" },
     subtext: "",
+    subtextColor: "#3b82f6",
   },
   {
     title: "Households Rent Burdened",
     value: "38.5%",
-    icon: <PieChartIcon sx={{ color: "#a259ff" }} />,
+    icon: <PieChartIcon sx={{ color: "#a259ff" }} />, // purple
     iconBg: "#f3eaff",
-    trend: { value: "2.3%", text: "from last year", type: "up" },
+    trend: { value: "2.3%", text: "from last year" },
     subtext: "(> 30% of Income)",
+    subtextColor: "#3b82f6",
   },
   {
     title: "Severely Rent Burdened",
     value: "15.2%",
-    icon: <ErrorOutlineIcon sx={{ color: "#e53935" }} />,
+    icon: <ErrorOutlineIcon sx={{ color: "#e53935" }} />, // red
     iconBg: "#ffeaea",
-    trend: { value: "1.8%", text: "from last year", type: "up" },
+    trend: { value: "1.8%", text: "from last year" },
     subtext: "(> 50% of Income)",
+    subtextColor: "#3b82f6",
   },
 ];
+
+const Trend = ({ value, text }) => (
+  <Box display="flex" alignItems="center" mt={1}>
+    <ArrowUpwardIcon sx={{ fontSize: 18, color: "#e53935", verticalAlign: "middle" }} />
+    <Typography
+      variant="body2"
+      sx={{ color: "#e53935", fontWeight: 600, ml: 0.5, mr: 0.5 }}
+    >
+      {value}
+    </Typography>
+    <Typography variant="body2" sx={{ color: "#3b82f6" }}>
+      {text}
+    </Typography>
+  </Box>
+);
 
 function Rentburden({ className }) {
   return (
@@ -76,25 +71,31 @@ function Rentburden({ className }) {
               p: 3,
               borderRadius: 3,
               boxShadow: "0 2px 8px 0 rgba(0,0,0,0.04)",
-              border: "1px solid #eee",
+              border: "1.5px solid #f1f5f9",
               background: "#fff",
               height: "100%",
-              minWidth: 200,
+              minWidth: 220,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
             }}
           >
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-              <Typography variant="body1" fontWeight={600}>
+              <Typography variant="body1" fontWeight={600} color="#222">
                 {item.title}
               </Typography>
               <Avatar sx={{ bgcolor: item.iconBg, width: 40, height: 40 }}>
                 {item.icon}
               </Avatar>
             </Box>
-            <Typography variant="h3" fontWeight={700} color="text.primary">
+            <Typography variant="h3" fontWeight={700} color="#222" sx={{ lineHeight: 1.1 }}>
               {item.value}
             </Typography>
             {item.subtext && (
-              <Typography variant="body2" color="#64748b" sx={{ mb: 1 }}>
+              <Typography
+                variant="body2"
+                sx={{ color: item.subtextColor, mb: 1, fontWeight: 500 }}
+              >
                 {item.subtext}
               </Typography>
             )}
