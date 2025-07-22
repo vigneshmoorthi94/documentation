@@ -16,6 +16,8 @@ import { BackArrowIcon, SendIcon } from "../../../assets/svg";
 import CloseIcon from "@mui/icons-material/Close";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import style from "../projectDetail/tabs/style";
+import SitesTableView from "../sites/listing";
+import BuildingsTableView from "../build/listing";
 
 // Dummy data for demonstration
 const projectOptions = [
@@ -44,10 +46,6 @@ const initialBuildings = [
     zipcode: "",
   },
 ];
-
-// Dummy components for selection dialogs
-const SitesTableView = () => <div style={{ padding: 24 }}>Sites selection table goes here.</div>;
-const BuildingsTableView = () => <div style={{ padding: 24 }}>Buildings selection table goes here.</div>;
 
 function BulkUpdateBuildings({ className, handleClose, open }) {
   // State for selectors
@@ -259,11 +257,19 @@ function BulkUpdateBuildings({ className, handleClose, open }) {
         </Grid>
 
         {addPage.value === "sites" && (
-          <SitesTableView />
+          <SitesTableView
+            isMiniFilter={true}
+            filter={{ status: "Active", city: "New York" }}
+            isRowSelectable={true}
+          />
         )}
 
         {addPage.value === "buildings" && (
-          <BuildingsTableView />
+          <BuildingsTableView
+            isMiniFilter={true}
+            filter={{ status: "Active", city: "New York" }}
+            isRowSelectable={true}
+          />
         )}
       </DialogComponent>
 
