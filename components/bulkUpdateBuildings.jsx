@@ -17,7 +17,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import style from "../projectDetail/tabs/style";
 import SitesTableView from "../sites/listing";
-import BuildingsTableView from "../build/listing";
+import BuildingsTableView from "../sites/tabs/buildings";
 
 // Dummy data for demonstration
 const projectOptions = [
